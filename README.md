@@ -25,6 +25,12 @@ Todo teste precisa ser void.
 
 Desabilita o metodo que está anotado com esta anotação.
 
+
+## @Nested
+
+Organização de testes unitários
+
+
 ## Classe de assertion
 
 Elas ajudam a gente a auto avaliar os testes
