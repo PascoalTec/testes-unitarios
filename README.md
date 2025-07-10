@@ -31,6 +31,31 @@ Desabilita o metodo que está anotado com esta anotação.
 Organização de testes unitários
 
 
+## @BeforeEach
+
+Ele executa o método primeiro antes dos outros
+
+## @BeforeAll
+
+Precisa ser um método estático
+
+Ele executa o método antes de todos os metodos e apenas uma vez
+
+ex.: static void initAll()
+
+
+## @AfterAll
+
+Precisa ser um método estático
+
+Depois de todos os métodos, ele executa
+
+
+## @AfterEach
+
+Depois de cada teste, ele é executado
+
+
 ## Classe de assertion
 
 Elas ajudam a gente a auto avaliar os testes
@@ -40,4 +65,27 @@ assertEquals(primeiro parametro -> valor esperado, segundo parametro -> valor at
 
 
 
+## Stub (dublê)
 
+
+Ele é uma implementação que ajuda a isolar o nosso teste unitário do banco de dados, para não ser um teste de integração
+
+
+
+## Mock
+
+
+Forma de fazer uma implementação falsa ou fictícia de uma classe ou de uma interface, assim como o STUB
+
+Muito utilizado nos testes unitários afim de utilizar os testes unitários
+
+Mock é um STUB porém com algumas vantagens:
+
+1.: Não é necessário implementar uma interface ou uma extender uma classe
+
+2.: Facilidade de definir um comportamento fictício dinâmico em uma classe
+
+3.: Verificar comportamento da classe com mock
+
+
+Framework Mockito + jUnit
