@@ -130,6 +130,7 @@ public class Post {
     }
 
     public final static class Builder {
+
         private Long id;
         private String titulo;
         private String conteudo;

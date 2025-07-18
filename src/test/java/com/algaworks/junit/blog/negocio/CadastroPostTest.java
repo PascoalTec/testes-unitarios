@@ -41,7 +41,7 @@ class CadastroPostTest {
     public final class Cadastro {
 
         @Spy
-        Post post = new Post("Olá mundo Java", "Olá Java com System.out.println", editor, true , true);
+        Post post = PostTestData.umPostNovo().build();
 
 
         @Test

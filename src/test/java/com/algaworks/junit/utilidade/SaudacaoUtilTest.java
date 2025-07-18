@@ -3,6 +3,9 @@ package com.algaworks.junit.utilidade;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,51 +14,54 @@ import static org.junit.jupiter.api.Assertions.*;
 class SaudacaoUtilTest {
 
     @Test
-    @DisplayName("Saudação com bom dia")
-    public void saudarComBomDia() {
+    public void Dado_uma_horario_matuino_Quando_saudar_Entao_deve_retornar_bom_dia() {
         int horaValida = 9;
         String saudacao = saudar(horaValida);
-        assertEquals("Bom dia", saudacao, "Saudação Incorreta!");
+        assertEquals("Bom dia", saudacao);
     }
 
     @Test
-    @DisplayName("Deve saudar com bom dia ás 5h")
-    public void saudarComBomDiaAPartir5h (){
-        int horaValida = 5;
-        String saudacao = saudar(horaValida);
-        assertEquals("Bom dia", saudacao, "Saudação Incorreta!");
-    }
-
-    @Test
-    public void saudarComBoaTarde() {
+    public void Dado_uma_horario_vespertino_Quando_saudar_Entao_deve_retornar_boa_tarde() {
         int horaValida = 15;
         String saudacao = saudar(horaValida);
-        assertEquals("Boa tarde", saudacao, "Saudação Incorreta!");
+        assertEquals("Boa tarde", saudacao);
     }
 
     @Test
-    public void saudarComBoaNoite() {
-        int horaValida = 20;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa noite", saudacao, "Saudação Incorreta!");
-    }
-
-    @Test
-    public void saudarComBoaNoiteAs4h() {
+    public void Dado_uma_horario_noturno_Quando_saudar_Entao_deve_retornar_boa_noite() {
         int horaValida = 4;
         String saudacao = saudar(horaValida);
-        assertEquals("Boa noite", saudacao, "Saudação Incorreta!");
+        assertEquals("Boa noite", saudacao);
     }
 
     @Test
-    public void deveLancarException() {
+    public void Dado_uma_hora_invalida_Quando_saudar_Entao_deve_lancar_exception() {
         int horaInvalida = -10;
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> saudar(horaInvalida));
+        Executable chamadaInvalidaDeMetodo = () -> saudar(horaInvalida);
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, chamadaInvalidaDeMetodo);
         assertEquals("Hora inválida", e.getMessage());
     }
 
     @Test
-    public void naoDeveLancarException() {
-        assertDoesNotThrow(() -> saudar(0));
+    public void Dado_uma_hora_valida_Quando_saudar_Entao_nao_deve_lancar_exception() {
+        int horaValida = 0;
+        Executable chamadaValidaDeMetodo = () -> saudar(horaValida);
+        assertDoesNotThrow(chamadaValidaDeMetodo);
+    }
+
+
+
+    @ParameterizedTest
+    @ValueSource(ints = {5,6,7,8,9,10,11})
+    public void Dado_horario_matinal_Quando_saudar_Entao_deve_retornar_bom_dia(int hora) {
+        String saudacao = saudar(hora);
+        assertEquals("Bom dia", saudacao);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {12,13,14,15,16,17})
+    public void Dado_horario_tarde_Quando_saudar_Entao_deve_retornar_boa_tarde(int hora) {
+        String saudacao = saudar(hora);
+        assertEquals("Boa tarde", saudacao);
     }
 }

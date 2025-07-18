@@ -89,3 +89,51 @@ Mock é um STUB porém com algumas vantagens:
 
 
 Framework Mockito + jUnit
+
+
+
+## Testes parametrizados
+
+Para utilizar esse parametro dinamico, tem que colocar uma dependencia no pom.xml
+
+<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.10.5</version>
+			<scope>test</scope>
+</dependency>
+
+@ParameterizedTest
+@ValueSource
+
+No parametro do teste tem que colocar o parametro que foi colocado dentro do ValueSource
+
+
+
+
+## JaCoCo (Java Code Coverage Library)
+
+Ele faz a mesma coisa que a IDE do intelliJ faz, mas fica via explorer
+
+Ele é um plugin.
+
+<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.8</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
