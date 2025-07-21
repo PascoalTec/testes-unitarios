@@ -137,3 +137,20 @@ Ele é um plugin.
 				</executions>
 			</plugin>
 
+
+## AssertJ
+
+Melhora a legibilidade do código de teste
+
+Fornece um diverso conjunto de asserções
+
+Mensagens de erro mais detalhadas e customizáveis
+
+### Módulos do AssertJ
+
+Core
+Guava
+Joda Time
+Neo4j
+Database
+Swing
